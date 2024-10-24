@@ -1,6 +1,6 @@
 /* Фон для всего body */
 body {
-    background-image: url('images/background.jpg'); /* Указываем путь к изображению */
+    background-image: url('images/background.JPG'); /* Указываем путь к изображению */
     background-size: contain; /* Фон адаптируется по размеру экрана и сохраняет пропорции */
     background-position: center; /* Центрируем изображение */
     background-repeat: no-repeat; /* Изображение не повторяется */
