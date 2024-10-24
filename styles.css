@@ -1,20 +1,35 @@
+/* Фон для всего body */
+body {
+    background-image: url('images/background.jpg'); /* Указываем путь к изображению */
+    background-size: contain; /* Фон адаптируется по размеру экрана и сохраняет пропорции */
+    background-position: center; /* Центрируем изображение */
+    background-repeat: no-repeat; /* Изображение не повторяется */
+    background-attachment: fixed; /* Фон фиксируется на месте при прокрутке */
+    font-family: Arial, sans-serif; /* Задаём шрифт для всего текста */
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Высота на весь экран */
+    overflow: hidden; /* Отключаем прокрутку, чтобы фон не выходил за пределы экрана */
+}
+
 #avatar-container {
-    width: 300px;
-    margin: 0 auto;
+    width: 300px; /* Размер аватара */
+    margin: 0 auto; /* Центрируем аватар */
     text-align: center;
+    margin-top: 250px; /* Отступ сверху, чтобы аватар был ниже */
 }
 
 .avatar {
     width: 100%;
     transition: transform 0.2s;
+    background-color: transparent; /* Прозрачный фон для самого аватара */
 }
 
 #button-container {
     text-align: center;
-    margin-top: 20px;
+    margin-top: -80px; /* Отступ сверху для кнопок */
 }
 
-/* Общий стиль для всех кнопок */
 button {
     padding: 15px 30px;
     font-size: 18px;
@@ -26,6 +41,7 @@ button {
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень */
     transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Плавный переход */
+    margin-bottom: 10px; /* Отступ между кнопками */
 }
 
 button:hover {
