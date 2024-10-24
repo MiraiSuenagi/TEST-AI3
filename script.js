@@ -61,6 +61,9 @@ function getPredefinedAnswer(question) {
         audioSrc = "audio/answer_age.mp3"; // Ответ на вопрос "Сколько тебе лет?"
     } else if (question.includes("что") && question.includes("умеешь")) {
         audioSrc = "audio/answer_skills.mp3"; // Ответ на вопрос "Что ты умеешь?"
+    } else if (question.includes("скачать") && question.includes("вопросы")) {
+        downloadQuestionsAsFile(); // Запускаем скачивание нераспознанных вопросов
+        return; // Выходим из функции, так как скачивание — это действие
     } else {
         audioSrc = "audio/unknown.mp3"; // Ответ для неизвестного вопроса
         unansweredQuestions.push({ question: question, date: new Date().toISOString() }); // Сохраняем нераспознанный вопрос
