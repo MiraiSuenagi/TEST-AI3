@@ -64,6 +64,9 @@ function getPredefinedAnswer(question) {
     } else if (question.includes("скачать") && question.includes("вопросы")) {
         downloadQuestionsAsFile(); // Запускаем скачивание нераспознанных вопросов
         return; // Выходим из функции, так как скачивание — это действие
+    } else if (question.includes("начать")) {
+        speakWelcomeMessage(); // Приветствие по команде "Начать"
+        return;
     } else {
         audioSrc = "audio/unknown.mp3"; // Ответ для неизвестного вопроса
         unansweredQuestions.push({ question: question, date: new Date().toISOString() }); // Сохраняем нераспознанный вопрос
@@ -136,11 +139,10 @@ function startRecognitionSafely() {
     }
 }
 
-// Воспроизведение приветствия и начало распознавания по нажатию кнопки
-document.getElementById('start-btn').addEventListener('click', function() {
-    speakWelcomeMessage();
-    setupSpeechRecognition(); // Запуск распознавания речи после приветствия
-});
+// Автоматический запуск распознавания речи при загрузке страницы
+window.onload = function() {
+    setupSpeechRecognition(); // Запускаем распознавание речи при загрузке
+};
 
 // Добавляем обработчик на кнопку для скачивания нераспознанных вопросов
 document.getElementById('download-btn').addEventListener('click', downloadQuestionsAsFile);
