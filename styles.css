@@ -14,7 +14,8 @@
     margin-top: 20px;
 }
 
-#start-btn {
+/* Общий стиль для всех кнопок */
+button {
     padding: 15px 30px;
     font-size: 18px;
     font-weight: bold;
@@ -24,15 +25,15 @@
     border-radius: 10px; /* Закругленные углы */
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Плавный переход */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Плавный переход */
 }
 
-#start-btn:hover {
+button:hover {
     background-color: #45a049; /* Цвет кнопки при наведении */
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Увеличиваем тень при наведении */
 }
 
-#start-btn:active {
+button:active {
     background-color: #3e8e41; /* Цвет кнопки при нажатии */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Уменьшаем тень при нажатии */
     transform: translateY(2px); /* Немного "опускаем" кнопку при нажатии */
