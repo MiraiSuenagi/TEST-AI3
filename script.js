@@ -1,3 +1,6 @@
+// Массив для хранения нераспознанных вопросов
+let unansweredQuestions = [];
+
 // Функция для воспроизведения приветственного сообщения
 function speakWelcomeMessage() {
     const welcomeMessage = new Audio("audio/welcome_message.mp3");
@@ -47,7 +50,7 @@ function stopMouthMovement() {
     avatar.src = 'avatar_closed.png'; // Устанавливаем закрытый рот после окончания речи
 }
 
-// **Функция для обработки ключевых слов в вопросах**
+// Функция для обработки ключевых слов в вопросах
 function getPredefinedAnswer(question) {
     let audioSrc;
 
@@ -60,9 +63,28 @@ function getPredefinedAnswer(question) {
         audioSrc = "audio/answer_skills.mp3"; // Ответ на вопрос "Что ты умеешь?"
     } else {
         audioSrc = "audio/unknown.mp3"; // Ответ для неизвестного вопроса
+        unansweredQuestions.push({ question: question, date: new Date().toISOString() }); // Сохраняем нераспознанный вопрос
     }
 
     playAudioResponse(audioSrc); // Воспроизводим аудиофайл
+}
+
+// Функция для скачивания нераспознанных вопросов в формате JSON
+function downloadQuestionsAsFile() {
+    if (unansweredQuestions.length === 0) {
+        alert('Нет нераспознанных вопросов для скачивания.');
+        return;
+    }
+
+    const data = JSON.stringify(unansweredQuestions, null, 2);
+    const blob = new Blob([data], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'unanswered_questions.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 }
 
 // Функция для настройки распознавания речи
@@ -116,3 +138,6 @@ document.getElementById('start-btn').addEventListener('click', function() {
     speakWelcomeMessage();
     setupSpeechRecognition(); // Запуск распознавания речи после приветствия
 });
+
+// Добавляем обработчик на кнопку для скачивания нераспознанных вопросов
+document.getElementById('download-btn').addEventListener('click', downloadQuestionsAsFile);
